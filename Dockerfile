@@ -76,6 +76,9 @@ RUN add-apt-repository ppa:git-core/ppa -y
 RUN apt-get update -y
 RUN apt-get install git -y
 
+# Workaround to use php8.0 instead of php8.1, which is installed by default
+RUN update-alternatives --set php /usr/bin/php8.0
+
 # Display versions installed
 RUN php -v
 RUN composer --version
