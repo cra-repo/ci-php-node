@@ -49,6 +49,7 @@ RUN apt-get install -y \
     php8.0-intl \
     php8.0-imap \
     php8.0-imagick \
+    php8.0-redis \
     php-memcached
 RUN command -v php
 
