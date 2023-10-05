@@ -32,23 +32,23 @@ RUN apt-get install -y \
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.0
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.2
 RUN apt-get install -y \
-    php8.0-curl \
-    php8.0-gd \
-    php8.0-dev \
-    php8.0-xml \
-    php8.0-bcmath \
-    php8.0-mysql \
-    php8.0-pgsql \
-    php8.0-mbstring \
-    php8.0-zip \
-    php8.0-bz2 \
-    php8.0-sqlite \
-    php8.0-soap \
-    php8.0-intl \
-    php8.0-imap \
-    php8.0-imagick \
+    php8.2-curl \
+    php8.2-gd \
+    php8.2-dev \
+    php8.2-xml \
+    php8.2-bcmath \
+    php8.2-mysql \
+    php8.2-pgsql \
+    php8.2-mbstring \
+    php8.2-zip \
+    php8.2-bz2 \
+    php8.2-sqlite \
+    php8.2-soap \
+    php8.2-intl \
+    php8.2-imap \
+    php8.2-imagick \
     php-memcached
 RUN command -v php
 
@@ -75,9 +75,6 @@ RUN touch ~/.ssh/config
 RUN add-apt-repository ppa:git-core/ppa -y
 RUN apt-get update -y
 RUN apt-get install git -y
-
-# Workaround to use php8.0 instead of php8.1, which is installed by default
-RUN update-alternatives --set php /usr/bin/php8.0
 
 # Display versions installed
 RUN php -v
