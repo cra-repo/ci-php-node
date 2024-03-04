@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV TZ=UTC
 
@@ -34,6 +34,8 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 # PHP
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.2
 RUN apt-get install -y \
+    php8.2-cli \
+    php8.2-fpm \
     php8.2-curl \
     php8.2-gd \
     php8.2-dev \
@@ -41,7 +43,6 @@ RUN apt-get install -y \
     php8.2-bcmath \
     php8.2-mysql \
     php8.2-pgsql \
-    php8.2-mbstring \
     php8.2-zip \
     php8.2-bz2 \
     php8.2-sqlite \
@@ -51,7 +52,8 @@ RUN apt-get install -y \
     php8.2-imagick \
     php8.2-amqp \
     php8.2-xml \
-    php-memcached
+    php8.2-mbstring \
+    php8.2-memcached
 RUN command -v php
 
 # Composer
@@ -62,10 +64,11 @@ RUN mv composer.phar /usr/local/bin/composer && \
 RUN command -v composer
 
 # Node.js
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get install nodejs -y
-RUN npm install npm@6 -g
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update && apt-get install nodejs -y
+RUN npm install npm@10 -g
 RUN command -v node
 RUN command -v npm
 
