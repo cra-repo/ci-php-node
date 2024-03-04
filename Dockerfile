@@ -27,7 +27,8 @@ RUN apt-get install -y \
     nasm \
     libjpeg-dev \
     libpng-dev \
-    libpng16-16
+    libpng16-16 \
+    php-xml
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
@@ -50,8 +51,6 @@ RUN apt-get install -y \
     php8.2-imap \
     php8.2-imagick \
     php8.2-amqp \
-    php8.2-dom \
-    php8.2-simplexml \
     php-memcached
 RUN command -v php
 
