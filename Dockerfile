@@ -50,6 +50,8 @@ RUN apt-get install -y \
     php8.2-imap \
     php8.2-imagick \
     php8.2-amqp \
+    php8.2-dom \
+    php8.2-simplexml \
     php-memcached
 RUN command -v php
 
