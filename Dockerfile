@@ -53,7 +53,8 @@ RUN apt-get install -y \
     php8.2-amqp \
     php8.2-xml \
     php8.2-mbstring \
-    php8.2-memcached
+    php8.2-memcached \
+    php8.2-opentelemetry
 RUN command -v php
 
 # Composer
