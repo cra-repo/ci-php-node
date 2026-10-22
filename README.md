@@ -10,7 +10,7 @@ Docker image for CI builds with PHP and Node.js.
 To build and publish the image run:
 
 ```bash
-docker build -t cyberriskalliance/ci-php-node:TAG_NAME -t cyberriskalliance/ci-php-node:latest .
+docker build --platform=linux/amd64 -t cyberriskalliance/ci-php-node:TAG_NAME -t cyberriskalliance/ci-php-node:latest .
 docker push cyberriskalliance/ci-php-node:TAG_NAME
 docker push cyberriskalliance/ci-php-node:latest
 ```
